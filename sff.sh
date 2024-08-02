@@ -43,7 +43,7 @@ fi
 # install fastfetch directly for other distros with apt / debian 12 or older / ubuntu 20.04 or older
 if [ "$INSTALL_METHOD" = "direct" ]; then
     sudo wget -qO /tmp/package.deb https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb
-    sudo apt install -y /tmp/package.deb
+    sudo DEBIAN_FRONTEND=noninteractive apt install -y /tmp/package.deb
 else
     # add ppa for ubuntu 22.04 or newer
     if [ "$INSTALL_METHOD" = "ppa" ]; then
@@ -58,5 +58,5 @@ else
     fi
     # install fastfetch from ppa / directly (debian 13 or newer)
     sudo apt update -y
-    sudo apt install -y fastfetch
+    sudo DEBIAN_FRONTEND=noninteractive apt install -y fastfetch
 fi
